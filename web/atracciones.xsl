@@ -29,9 +29,12 @@
 					<th>PESO MAXIMO</th>
 				</tr>
 
+				<!-- Utilización de for-each para seleccionar las atracciones -->
                 <xsl:for-each select="atracciones/atraccion">
+					<!-- Para obtener la ruta, se deberá sustituir los espacios en blanco del nombre por barras bajas con la función translate -->
                     <xsl:variable name="nombre_sin_espacios" select="translate(nombre, ' ', '_')" />
                     <tr>
+						<!-- Mostrará el nombre, la edad mínima y el peso máximo de todas las atracciones. -->
                         <td><a href="https://es.wikipedia.org/wiki/{$nombre_sin_espacios}" target="_blank"><xsl:value-of select='nombre' /></a></td>
                         <td><xsl:value-of select='restricciones/edadMinima' /></td>
                         <td><xsl:value-of select='restricciones/pesoMaximo' /></td>

@@ -20,10 +20,12 @@
 		</header>
 		
         <main>
+			<!-- El año se almacenará en una variable y se trabajara con ella. -->
             <xsl:variable name="año" select="'2024'"/>
             <h1>Eventos del <xsl:value-of select="$año"/></h1>
 
-            <!-- Seleccionamos los eventos y los ordenamos -->
+            <!-- Seleccionamos solo los eventos del 2024 ordenados por fecha. Ordenamos primero los de diciembre, al final los de enero 
+			Sin for-each-->
             <xsl:apply-templates select="eventos/evento[substring(fechaHora, 1, 4) = $año]"> 
                 <xsl:sort select="fechaHora" order="descending" />
             </xsl:apply-templates>
@@ -36,7 +38,8 @@
 </html>
 </xsl:template>
 
-<!-- Plantilla para los eventos -->
+<!-- Plantilla para los eventos
+	Se visualizará el nombre del evento, el total de comentarios y cada uno de los comentarios -->
 <xsl:template match="evento">
     <article class="eventos">
 		<h4><xsl:value-of select="descripcion"/> - <xsl:value-of select="count(comentarios/comentario)"/> COMENTARIOS</h4>

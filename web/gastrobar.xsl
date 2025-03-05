@@ -22,9 +22,13 @@
 
 		<main id="gastrobar">
 			<h1>ENTRANTES</h1>
+			
+			<!-- Mostrará el nombre, la imagen y el precio de todos los entrantes -->			
             <xsl:for-each select="gastrobar/platos/plato[@categoria='Entrante']">
                 <article class="articulo">
 				<img src="../img/{foto}" class="imagen"/>
+
+				<!--Aquellos cuyo código empiece por "A", se destacarán con la etiqueta "New".-->
 				<xsl:if test="starts-with(@codigo,'A')">
 					<img src="../img/icono-novedad.png" class="novedad-icono" />		
 				</xsl:if>
